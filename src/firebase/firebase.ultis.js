@@ -9,17 +9,17 @@ const config = {
   storageBucket: "solar-magpie-277211.appspot.com",
   messagingSenderId: "1007415910453",
   appId: "1:1007415910453:web:c578584ae92228d777917c",
-  measurementId: "G-1WD1PNYYJX"
+  measurementId: "G-1WD1PNYYJX",
 };
 
-export const createUserProfileDocument = async ( userAuth, additionalData) => {
-  if(!userAuth) return;
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
   const snapShot = await userRef.get();
 
-  if(!snapShot.exists) {
+  if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createAt = new Date();
 
@@ -28,15 +28,15 @@ export const createUserProfileDocument = async ( userAuth, additionalData) => {
         displayName,
         email,
         createAt,
-        ...additionalData
-      })
+        ...additionalData,
+      });
     } catch (error) {
       console.log("Lỗi tạo tài khoản google rồi bạn ơi!", error.message);
     }
   }
 
   return userRef;
-}
+};
 
 firebase.initializeApp(config);
 

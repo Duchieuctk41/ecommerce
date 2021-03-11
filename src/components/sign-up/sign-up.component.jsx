@@ -13,16 +13,16 @@ class SignUp extends Component {
       displayName: "",
       email: "",
       password: "",
-      confirmPassword: ""
-    }
+      confirmPassword: "",
+    };
   }
 
-  handleSubmit = async event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
 
-    if(password !== confirmPassword) {
+    if (password !== confirmPassword) {
       alert("Không khớp mật khẩu");
       return;
     }
@@ -32,7 +32,7 @@ class SignUp extends Component {
         email,
         password
       );
-      console.log({user})
+      console.log({ user });
 
       await createUserProfileDocument(user, { displayName });
 
@@ -40,18 +40,17 @@ class SignUp extends Component {
         displayName: "",
         email: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
       });
-
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({[name]: value});
-  }
+    this.setState({ [name]: value });
+  };
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
@@ -60,14 +59,42 @@ class SignUp extends Component {
         <h1>I do not have an account</h1>
         <span>Sign up your email and password</span>
         <form className="sign-up-form" onSubmit={this.handleSubmit}>
-        <FormInput type="text" name="displayName" value={displayName} label="display Name" onChange={this.handleChange} required ></FormInput>
-        <FormInput type="email" name="email" value={email} label="Email" onChange={this.handleChange} required ></FormInput>
-        <FormInput type="password" name="password" value={password} label="Password" onChange={this.handleChange} required ></FormInput>
-        <FormInput type="password" name="confirmPassword" value={confirmPassword} label="Confirm Password" onChange={this.handleChange} required ></FormInput>
-        <CustomButton type="submit">SIGN UP</CustomButton>
+          <FormInput
+            type="text"
+            name="displayName"
+            value={displayName}
+            label="display Name"
+            onChange={this.handleChange}
+            required
+          ></FormInput>
+          <FormInput
+            type="email"
+            name="email"
+            value={email}
+            label="Email"
+            onChange={this.handleChange}
+            required
+          ></FormInput>
+          <FormInput
+            type="password"
+            name="password"
+            value={password}
+            label="Password"
+            onChange={this.handleChange}
+            required
+          ></FormInput>
+          <FormInput
+            type="password"
+            name="confirmPassword"
+            value={confirmPassword}
+            label="Confirm Password"
+            onChange={this.handleChange}
+            required
+          ></FormInput>
+          <CustomButton type="submit">SIGN UP</CustomButton>
         </form>
       </div>
-    )
+    );
   }
 }
 
