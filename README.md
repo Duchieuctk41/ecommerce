@@ -1,4 +1,4 @@
-Ứng dụng web bán quần áo (code theo khóa học - Reactjs) - lần 2
+# Web bán quần áo (code theo khóa học Udemy) - Reactjs
 
 [Demo](https://hieuecommerce.netlify.app/)
 
